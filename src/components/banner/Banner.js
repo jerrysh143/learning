@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import BannerImg from "../../images/Banner.png";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import Select from "react-select";
+import { options } from "./OptionsSelect";
 
-function Banner() {
+export function Banner() {
+  const [selectedOption, setSelectedOption] = useState(null);
   return (
     <>
       <section className="max-w-[1350px] mx-auto px-15px flex justify-start">
@@ -33,17 +37,62 @@ function Banner() {
             qui ratione sequi nesciunt.
           </p>
           <div className="">
-            <ul>
-              <li>
-                <a href="">Buy</a>
-              </li>
-              <li>
-                <a href="">Sell</a>
-              </li>
-              <li>
-                <a href="">Rent</a>
-              </li>
-            </ul>
+            <Tabs>
+              <TabList className={"flex flex-wrap mt-70px ml-[13px]"}>
+                <Tab
+                  className={
+                    "flex items-center justify-center mr-[8px] w-[55px] h-[29px] bg-white rounded-tl rounded-tr text-center text-violet-950 text-sm"
+                  }
+                  classID="1"
+                >
+                  Buy
+                </Tab>
+                <Tab
+                  className={
+                    "flex items-center justify-center mr-[8px] w-[55px] h-[29px] bg-white rounded-tl rounded-tr text-center text-violet-950 text-sm"
+                  }
+                  classID="2"
+                >
+                  Sell
+                </Tab>
+                <Tab
+                  className={
+                    "flex items-center justify-center mr-[8px] w-[55px] h-[29px] bg-white rounded-tl rounded-tr text-center text-violet-950 text-sm"
+                  }
+                  classID="3"
+                >
+                  Rent
+                </Tab>
+              </TabList>
+              <TabPanel className={""} tabIndex={1}>
+                <div className="flex flex-wrap bg-white bg-opacity-20 rounded-md border border-white border-opacity-25 p-15px">
+                  <Select
+                    value={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                    className="mr-[12px] w-40 h-[38px] bg-white rounded"
+                  />
+                  <Select
+                    value={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                    className="mr-[12px] w-40 h-[38px] bg-white rounded"
+                  />
+                  <Select
+                    value={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                    className="mr-[12px] w-40 h-[38px] bg-white rounded"
+                  />
+                  <a href="#" className="flex items-center justify-center w-28 h-[38px] bg-violet-950 rounded shadow text-white text-base font-semibold">
+                    Search
+                  </a>
+                </div>
+              </TabPanel>
+              <TabPanel tabIndex={2}>
+                <h2>Any content 2</h2>
+              </TabPanel>
+            </Tabs>
           </div>
         </div>
       </section>
